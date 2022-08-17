@@ -71,6 +71,7 @@ export default{
 
     <br><br>
 
+    <h2>Suggested articles</h2>
     <div class="side-item">
         <CatalogueItem views rating readingTime>
             <template #picture>
@@ -144,6 +145,10 @@ export default{
 }
 .side-section { 
     grid-area: side-section;     
+}
+
+.side-section h2{
+    font-weight: 600;
 }
 
 
