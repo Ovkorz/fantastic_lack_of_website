@@ -23,7 +23,7 @@
     height: 100%;
 }
 
-img{
+.banner-container img{
     max-width: 100%;
     height: auto;
     filter: opacity(50%);
