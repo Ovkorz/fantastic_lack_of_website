@@ -7,13 +7,14 @@ import {
 } from '@dafcoe/vue-collapsible-panel'
 import CatalogueItem from '../components/elements/CatalogueItem.vue'
 import SectionAuthor from '../components/sections/SectionAuthor.vue'
+import FlyingButton from '../components/elements/FlyingButton.vue'
 // import '@dafcoe/vue-collapsible-panel/dist/vue-collapsible-panel.css'
 
 export default{
     data() {
         return {};
     },
-    components: { TopBanner, VueCollapsiblePanelGroup, VueCollapsiblePanel, CatalogueItem, SectionAuthor }
+    components: { TopBanner, VueCollapsiblePanelGroup, VueCollapsiblePanel, CatalogueItem, SectionAuthor, FlyingButton }
 }
 </script>
 
@@ -51,6 +52,9 @@ export default{
 
     </main>
 
+    <div class="navigation-section">
+        <FlyingButton/>
+    </div>
     <br><br>
     <div class="author-section">
         <SectionAuthor>
@@ -172,6 +176,15 @@ export default{
 
     grid-area: article; 
 }
+
+.navigation-section{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 20px;
+}
+
+
+
 .side-section { 
     grid-area: side-section;     
 }
