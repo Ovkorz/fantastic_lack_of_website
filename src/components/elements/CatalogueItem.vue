@@ -8,14 +8,22 @@ export default{
         views: { type: Boolean },
         rating: { type: Boolean },
         readingTime: { type: Boolean },
+        pictureSize: {type: Number, default: 1},
     },
-    components: { IconViews, IconRating, IconTime }
+    components: { IconViews, IconRating, IconTime },
+    computed:{
+        pictureSideLength(): object {
+            return {
+                '--photo-size': this.pictureSize * 100 + 'px'
+            }
+        },
+    }
 }
 </script>
 
 <template>
     <div class="item-container">
-        <div class="picture-section"> 
+        <div :style="pictureSideLength" class="picture-section"> 
             <slot name="picture"></slot>
         </div>
         <div class="contents">
@@ -51,17 +59,20 @@ export default{
 
         background-color: var(--color-background-soft);
         margin-bottom: 10px;
+
+        padding: 5px;
     }
 
     .picture-section{
         height: 100%;
-        max-width: 30%;      
+        max-width: 50%;     
         padding: 10px;  
+
     }
 
     .picture-section img {
-        width: 100px;
-        height: 100px;
+        width: var(--photo-size);
+        height: var(--photo-size);
     }
 
     .contents{

@@ -24,7 +24,7 @@
 }
 
 .banner-container img{
-    max-width: 100%;
+    width: 100%;
     height: auto;
     filter: opacity(50%);
 }
@@ -35,9 +35,7 @@
     left: 0px;
     height: 100%;
     width: 100%;
-/* 
-    display: flex;
-    place-items: center; */
+
 }
 
 .banner-title{

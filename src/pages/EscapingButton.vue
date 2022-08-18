@@ -6,13 +6,15 @@ import {
   VueCollapsiblePanel,
 } from '@dafcoe/vue-collapsible-panel'
 import CatalogueItem from '../components/elements/CatalogueItem.vue'
+import SectionAuthor from '../components/sections/SectionAuthor.vue'
+import FlyingButton from '../components/elements/FlyingButton.vue'
 // import '@dafcoe/vue-collapsible-panel/dist/vue-collapsible-panel.css'
 
 export default{
     data() {
         return {};
     },
-    components: { TopBanner, VueCollapsiblePanelGroup, VueCollapsiblePanel, CatalogueItem }
+    components: { TopBanner, VueCollapsiblePanelGroup, VueCollapsiblePanel, CatalogueItem, SectionAuthor, FlyingButton }
 }
 </script>
 
@@ -31,20 +33,51 @@ export default{
 </TopBanner>
 <div class="site-contents">
 
-<main class="article">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</main>
+<div class="article">
+    <main >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+
+    </main>
+
+    <div class="navigation-section">
+        <FlyingButton/>
+    </div>
+    <br><br>
+    <div class="author-section">
+        <SectionAuthor>
+            <template #author-photo>
+                <img 
+                src="../assets/images/sad_pepe.png" 
+                alt="Mr. Pepe's photo"
+                
+                width="150"
+                height="350"
+                >
+            </template>
+            <template #name>Mr. Sad Pepe</template>
+            <template #description>
+                He may be a little sad boi sometimes
+                but he makes great lasagna! 
+            </template>
+        </SectionAuthor>
+    </div>
+</div>
+
+
+
 
 <div class="side-section">
     <div class="side-item">
@@ -143,6 +176,15 @@ export default{
 
     grid-area: article; 
 }
+
+.navigation-section{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 20px;
+}
+
+
+
 .side-section { 
     grid-area: side-section;     
 }
