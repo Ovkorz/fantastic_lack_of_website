@@ -104,7 +104,6 @@ export default{
                 // }
             })
 
-            this.correctAnimation = true;
         }
     },
     computed:{
