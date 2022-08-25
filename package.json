@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@dafcoe/vue-collapsible-panel": "^0.2.0",
+    "animejs": "^3.2.1",
     "pinia": "^2.0.17",
     "vue": "^3.2.37",
     "vue-router": "^4.1.3"
