@@ -8,3 +8,5 @@ declare module '@dafcoe/vue-collapsible-panel'
         VueCollapsiblePanel,
     }
 }
+
+declare module 'animejs/lib/anime.es.js';
