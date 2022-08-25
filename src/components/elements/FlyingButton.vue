@@ -16,6 +16,8 @@ export default{
             repulsionMultiplier: 5, //repulsive force pushing button away from pointer
             deceleration: 400,
             angleCoef: 1,
+            collisionTresholdX: 2,
+            collisionTresholdY: 2,
 
             minDistance: 20,
             minDuration: 0.2,
@@ -49,6 +51,24 @@ export default{
             return {
                 x: scrollLeft,
                 y: scrollTop,
+            }
+        },
+        calculateCollisionPoint(dest){
+            const body = document.body
+
+            if(dest.x < this.collisionTresholdX ){dest.x = this.collisionTresholdX}
+            else if(dest.x + this.width > body.clientWidth - this.collisionTresholdX){
+                dest.x = body.clientWidth - this.width - this.collisionTresholdX 
+            }
+
+            if(dest.y < this.collisionTresholdY){dest.y = this.collisionTresholdY}
+            else if(dest.y + this.height > body.clientHeight - this.collisionTresholdY){
+                dest.y = body.clientHeight- this.height - this.collisionTresholdY
+            }
+
+            return {
+                x: dest.x,
+                y: dest.y,
             }
         },
         updateMousePos(mouseEvent: MouseEvent){
