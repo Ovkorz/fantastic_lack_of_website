@@ -7,8 +7,8 @@ export default{
        return{
             x: 0,
             y: 0,
-            widthHalf: 0,
-            heightHalf: 0,
+            width: 0,
+            height: 0,
             offsetX: 0,
             offsetY: 0,
 
@@ -138,6 +138,12 @@ export default{
                 x: buttonCenterPos.x - mouseXDoc,
                 y: buttonCenterPos.y - mouseYDoc,
             }
+        },
+        widthHalf():Number{
+            return this.height /2;
+        },
+        heightHalf():Number{
+            return this.width /2;
         }
     },
     created(){
@@ -152,8 +158,8 @@ export default{
         const body = document.body;
         const scroll = this.getScroll();
 
-        this.widthHalf = buttonRect.width / 2;
-        this.heightHalf = buttonRect.height / 2;
+        this.width = buttonRect.width;
+        this.height = buttonRect.height;
 
         this.offsetX  = buttonRect.left +  scroll.x;
         this.offsetY = buttonRect.top + scroll.y;
