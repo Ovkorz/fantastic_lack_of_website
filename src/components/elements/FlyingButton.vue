@@ -12,29 +12,28 @@ export default{
             offsetX: 0,
             offsetY: 0,
 
-            movementDuration: 0,
-
-            distanceMultiplier: 10,
-            repulsionMultiplier: 10, //repulsive force pushing button away from pointer
+            distanceMultiplier: 4,
+            repulsionMultiplier: 5, //repulsive force pushing button away from pointer
             deceleration: 400,
             angleCoef: 1,
 
             minDistance: 20,
             minDuration: 0.2,
-
             correctAnimation:false,
 
             mouseX:0,
             mouseY:0,
-            
             mouseXPrev:0,
             mouseYPrev:0,
 
+            movementDuration: 0,
             destination: {
                 x:0,
                 y:0,
             },
-       }
+ 
+            
+}
     },
     methods:{
         moveToRandom(){
@@ -142,7 +141,11 @@ export default{
         }
     },
     created(){
-        window.addEventListener('mousemove', e => this.updateMousePos(e));        
+        window.addEventListener('mousemove', e => this.updateMousePos(e)); 
+        window.addEventListener('mousemove', () =>{ 
+            if(this.correctAnimation){this.move()}
+        })       
+        
     },
     mounted(){
         const buttonRect = this.$refs.buttonAreaDOM.getBoundingClientRect();
@@ -154,16 +157,27 @@ export default{
 
         this.offsetX  = buttonRect.left +  scroll.x;
         this.offsetY = buttonRect.top + scroll.y;
+
+        this.$refs.buttonAreaDOM.addEventListener('mouseenter', () =>{
+            this.correctAnimation = true;
+        })
+
+        this.$refs.buttonAreaDOM.addEventListener('mouseleave', () =>{
+            this.correctAnimation = false;
+        })
     },
     unmounted(){
         window.removeEventListener('mousemove', e => this.updateMousePos(e));        
+        window.removeEventListener('mousemove', () =>{ 
+            if(this.correctAnimation){this.move()}
+        })    
     }
 }
 </script>
 
 <template>
 
-<div @mouseenter="move()" @mouseleave="()=> {this.correctAnimaion = false;}" class="flying-button-area" :style="cssPositionVars" ref="buttonAreaDOM">
+<div @mouseenter="move()" @mouseleave="()=> {this.correctAnimaion = false;}" class="flying-button-area" ref="buttonAreaDOM">
         <div class="flying-button" ref="buttonDOM">Next</div>
     </div>
 </template>
