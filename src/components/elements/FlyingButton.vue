@@ -56,14 +56,19 @@ export default{
         calculateCollisionPoint(dest){
             const body = document.body
 
-            if(dest.x < this.collisionTresholdX ){dest.x = this.collisionTresholdX}
-            else if(dest.x + this.width > body.clientWidth - this.collisionTresholdX){
-                dest.x = body.clientWidth - this.width - this.collisionTresholdX 
+            let collisionPoint = {
+                x:0,
+                y:0,
             }
 
-            if(dest.y < this.collisionTresholdY){dest.y = this.collisionTresholdY}
+            if(dest.x < this.collisionTresholdX ){collisionPoint.x = this.collisionTresholdX}
+            else if(dest.x + this.width > body.clientWidth - this.collisionTresholdX){
+                collisionPoint.x = body.clientWidth - this.width - this.collisionTresholdX 
+            }
+
+            if(dest.y < this.collisionTresholdY){collisionPoint.y = this.collisionTresholdY}
             else if(dest.y + this.height > body.clientHeight - this.collisionTresholdY){
-                dest.y = body.clientHeight- this.height - this.collisionTresholdY
+                collisionPoint.y = body.clientHeight- this.height - this.collisionTresholdY
             }
 
             return {
@@ -105,9 +110,16 @@ export default{
         },
         move(){
             this.destination = this.calculateDestination();
+            const collisionPoint = this.calculateCollisionPoint(this.destination)
 
-            const distX = this.destination.x - this.x;
-            const distY = this.destination.y - this.y;
+            const posAbs = this.buttonCoordsDocAnime;
+            const posRel = {
+                x: posAbs.x - this.offsetX,
+                y: posAbs.y - this.offsetY,
+            }
+            
+            const distX = this.destination.x - posRel.x;
+            const distY = this.destination.y - posRel.y;
 
             const distance = Math.sqrt(Math.pow(distX,2) + Math.pow(distY,2));
             const duration = this.calculateDurationMs(distance);
